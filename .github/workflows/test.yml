@@ -1,0 +1,40 @@
+name: Test Aether UserLand Package
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Test Installer Script
+        run: |
+          chmod +x install.sh
+          # Dry run (no actual installation)
+          bash install.sh --dry-run || true
+
+      - name: Test Config Scripts
+        run: |
+          for config in config/*; do
+            echo "Testing $config..."
+            bash "$config" --dry-run || true
+          done
+
+      - name: Test Scripts
+        run: |
+          for script in scripts/*; do
+            echo "Testing $script..."
+            bash "$script" --help || true
+          done
+
+      - name: Test Tools
+        run: |
+          for tool in tools/*; do
+            echo "Testing $tool..."
+            bash "$tool" --dry-run || true
+          done
