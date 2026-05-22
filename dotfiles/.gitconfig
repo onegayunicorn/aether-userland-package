@@ -1,0 +1,43 @@
+[user]
+    name = Sovereign Architect
+    email = tyrone@onegayunicorn.foundation
+
+[core]
+    editor = vim
+    autocrlf = input
+
+[init]
+    defaultBranch = main
+
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    br = branch
+    up = remote update origin --prune
+    cp = cherry-pick
+    rb = rebase
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+
+[color]
+    ui = true
+
+[push]
+    default = simple
+
+[merge]
+    tool = vimdiff
+
+[diff]
+    tool = vimdiff
+
+[difftool "vimdiff"]
+    cmd = vimdiff "$LOCAL" "$BASE" "$REMOTE" "$MERGED"
+
+[mergetool "vimdiff"]
+    cmd = vimdiff "$LOCAL" "$BASE" "$REMOTE" "$MERGED"
+
+# Aether Orchestrator specific
+[aether]
+    coherence = 0.99997
+    entanglement = 288
